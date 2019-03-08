@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/yangdepp/webpack4-demo/issues"
   },
-  "homepage": "https://github.com/yangdepp/webpack4-demo#readme"
+  "homepage": "https://github.com/yangdepp/webpack4-demo#readme",
+  "devDependencies": {
+    "awesome-typescript-loader": "^5.2.1",
+    "typescript": "^3.3.3333",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3"
+  }
 }
