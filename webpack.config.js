@@ -1,4 +1,5 @@
 const path = require('path')
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   mode: 'production',
   entry: {
@@ -6,7 +7,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist/lib'),
-    library: 'FUI',
+    library: 'GOLU',
     libraryTarget: 'umd',
   },
   module: {
@@ -16,6 +17,12 @@ module.exports = {
         loader: 'awesome-typescript-loader'
       }
     ]
-  }
+  },
+  plugins: [
+    new HTMLWebpackPlugin({
+      title: 'GOLU-UI',
+      template: 'index.html'
+    })
+  ]
 
 } 
