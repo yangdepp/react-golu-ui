@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -18,11 +20,17 @@
   },
   "homepage": "https://github.com/yangdepp/webpack4-demo#readme",
   "devDependencies": {
+    "@types/react": "^16.8.7",
+    "@types/react-dom": "^16.8.2",
     "awesome-typescript-loader": "^5.2.1",
     "html-webpack-plugin": "^3.2.0",
     "typescript": "^3.3.3333",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.2.1"
+  },
+  "dependencies": {
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4"
   }
 }
