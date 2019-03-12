@@ -1,7 +1,6 @@
 const path = require('path')
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
-  // mode: 'production',
   entry: {
     index: './lib/index.tsx'
   },
@@ -18,28 +17,11 @@ module.exports = {
       {
         test: /\.tsx?$/,
         loader: 'awesome-typescript-loader'
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-sprite-loader'
       }
     ]
   },
-  // plugins: [
-  //   new HTMLWebpackPlugin({
-  //     title: 'GOLU-UI',
-  //     template: 'index.html'
-  //   })
-  // ],
-  //  排除React的源代码
-  // externals: {
-  //   react: {
-  //     commonjs: 'react',
-  //     commonjs2: 'react',
-  //     amd: 'react',
-  //     root: 'React',
-  //   },
-  //   react: {
-  //     commonjs: 'react-dom',
-  //     commonjs2: 'react-dom',
-  //     amd: 'react-dom',
-  //     root: 'ReactDOM',
-  //   }
-  // }
 }
