@@ -1,7 +1,8 @@
 import React from 'react';
 // import './icons/wechat.svg';
 // import './icons/alipay.svg';
-import './importAllIcons'
+import './importAllIcons';
+import './icon.scss';
 
 interface IconProps {
   name: string;
@@ -10,11 +11,9 @@ interface IconProps {
 //  这个类型接受一个参数
 const Icon: React.FunctionComponent<IconProps> = (props) => {
   return (
-    <span>
-      <svg>
-        <use xlinkHref={`#${props.name}`}></use>
-      </svg>
-    </span>
+    <svg className="golu-icon">
+      <use xlinkHref={`#${props.name}`}></use>
+    </svg>
   )
 }
 
