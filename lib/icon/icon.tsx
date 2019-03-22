@@ -3,7 +3,7 @@ import React from 'react';
 // import './icons/alipay.svg';
 import './importAllIcons';
 import './icon.scss';
-import classes from './helpers/classes'
+import classes from '../helpers/classes'
 
 //  继承一下SVGAttributes或者HTMLAttributes，react已经把事件及属性都声明好了。
 interface IconProps extends React.SVGAttributes<SVGElement> {
