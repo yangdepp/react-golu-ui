@@ -9,4 +9,4 @@ module.exports = Object.assign({}, base, {
       template: 'index.html'
     })
   ],
-}) 
+})
