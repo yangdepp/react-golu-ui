@@ -32,9 +32,6 @@ jobs:
           root: .
           paths:
             - dist
-            - package.json
-            - LICENSE
-            - README.md
   test:
     <<: *defaults
     steps:
@@ -55,4 +52,4 @@ workflows:
             - test
       - test:
           requires:
-            - prepare
+            - prepare 

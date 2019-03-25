@@ -24,4 +24,4 @@
 //       onMouseLeave={() => { console.log('leave') }} />
 //   </div>, document.querySelector('#root'))
 
-export { default as Icon } from './icon/icon'
+export { default as Icon } from './icon/icon';
