@@ -32,9 +32,6 @@ jobs:
           root: .
           paths:
             - dist
-            - package.json
-            - LICENSE
-            - README.md
   test:
     <<: *defaults
     steps:
