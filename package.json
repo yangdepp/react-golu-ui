@@ -1,10 +1,12 @@
 {
   "name": "react-golu",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "dist/lib/index.js",
   "types": "dist/lib/index",
-  "files": ["/dist"],
+  "files": [
+    "/dist"
+  ],
   "scripts": {
     "test": "cross-env NODE_ENV=test jest --config=jest.config.js --runInBand",
     "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.dev.js",
@@ -55,4 +57,3 @@
     "react-dom": "^16.8.4"
   }
 }
-
