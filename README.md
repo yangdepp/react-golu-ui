@@ -19,6 +19,6 @@ api有变化，但是变化并不大，完全不影响现有代码
 npm version major  
 这个命令会升级version的第一位  0.0.2 => 1.0.0  
 api变化很大，影响现有代码  
-\
+
 
 ```sh ./deploy.sh```
