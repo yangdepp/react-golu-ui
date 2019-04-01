@@ -32,6 +32,9 @@ jobs:
           root: .
           paths:
             - dist
+            - package.json
+            - LICENSE
+            - README.md
   test:
     <<: *defaults
     steps:
@@ -41,6 +44,12 @@ jobs:
       - run: yarn ci
       - store_test_results:
           path: test-results
+  publish:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: .
+      - run: npm publish
 
 workflows:
   version: 2
@@ -52,4 +61,7 @@ workflows:
             - test
       - test:
           requires:
-            - prepare 
+            - prepare
+      - publish:
+          requires:
+            - build
