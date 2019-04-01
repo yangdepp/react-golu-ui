@@ -9,7 +9,6 @@ const fn: React.MouseEventHandler = (e) => {
   console.log((e.target as SVGUseElement).href)
 }
 
-
 ReactDOM.render(
   <div>
     <Icon name="wechat"
