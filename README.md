@@ -8,7 +8,7 @@
 因此可以用npm token设置  
 ...  
 npm publish  
-\
+
 ##  npm自动更改version发布
 ```npm version patch```  
 这个命令会自动更改```package.json```版本号，并提交一次代码  
@@ -24,7 +24,7 @@ npm publish
 表示：api变化很大，影响现有代码  
 
 ##  打tag配合CIRCLECI发布
-git add代码后，执行```sh ./deploy.sh```  
+git add代码后，执行```sh ./deploy.sh patch```  
 ```npm version $1 && git push```  
 如：npm version patch就是小升级代码  
 
