@@ -1,5 +1,5 @@
 #  一个React UI轮子
-
+[![CircleCI](https://circleci.com/gh/yangdepp/react-golu-ui.svg?style=svg)](https://circleci.com/gh/yangdepp/react-golu-ui)
 
 
 #  发布
