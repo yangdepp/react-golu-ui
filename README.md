@@ -1,4 +1,5 @@
 #  一个React UI轮子
+[![npm version](https://badge.fury.io/js/react-golu.svg)](https://badge.fury.io/js/react-golu)
 [![CircleCI](https://circleci.com/gh/yangdepp/react-golu-ui.svg?style=svg)](https://circleci.com/gh/yangdepp/react-golu-ui)
 
 
