@@ -1,24 +1,33 @@
 import React from 'react';
-import ReactDOM from 'react-dom'
-import Icon from './lib/icon/icon';
-const fn: React.MouseEventHandler = (e) => {
-  console.log(e);
-  console.log(e.target);
-
-  //  如果想要打印e.target的属性，需要用断言明确e.target的类型
-  console.log((e.target as SVGUseElement).href)
-}
+import ReactDOM from 'react-dom';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import IconExample from './lib/icon/icon.example';
+import ButtonExample from './lib/button.example';
 
 ReactDOM.render(
-  <div>
-    <Icon name="wechat"
-      className="weixin"
-      onClick={fn}
-      onMouseEnter={() => { console.log('enter') }}
-      onMouseLeave={() => { console.log('leave') }}
-      onTouchStart={() => { console.log('touch') }} />
-    <Icon name="alipay"
-      onClick={fn}
-      onMouseEnter={() => { console.log('enter') }}
-      onMouseLeave={() => { console.log('leave') }} />
-  </div>, document.querySelector('#root'))
+  <Router>
+    <div>
+      <header>
+        <div className="logo">react-golu</div>
+      </header>
+      <div>
+        <aside>
+          <h2>组件</h2>
+          <ul>
+            <li>
+              <Link to="/icon">Icon</Link>
+            </li>
+            <li>
+              <Link to="/button">Button</Link>
+            </li>
+          </ul>
+        </aside>
+        <main>
+          <Route path="/icon" component={IconExample} />
+          <Route path="/button" component={ButtonExample} />
+        </main>
+      </div>
+    </div>
+  </Router>,
+  document.querySelector('#root'),
+);
