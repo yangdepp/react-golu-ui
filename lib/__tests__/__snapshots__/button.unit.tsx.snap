@@ -6,9 +6,3 @@ exports[`button tests 是个button 1`] = `
   onClick={[Function]}
 />
 `;
-
-exports[`button tests 是个div 1`] = `
-<div>
-  你好
-</div>
-`;
