@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import Dialog, { alert, confirm, modal } from './dialog';
+import React, { useState } from "react";
+import Dialog, { alert, confirm, modal } from "./dialog";
+import { Button } from "../index";
 
 export default function() {
   const [x, setX] = useState(false);
@@ -8,8 +9,8 @@ export default function() {
     const close = modal(
       <h1>
         你好
-        <button onClick={() =>close()}>close</button>
-      </h1>,
+        <Button onClick={() => close()}>close</Button>
+      </h1>
     );
   };
 
@@ -17,27 +18,30 @@ export default function() {
     <div>
       <div>
         <h1>example2</h1>
-        <button onClick={() => setX(!x)}>click</button>
+        <Button onClick={() => setX(!x)} type="primary">
+          click
+        </Button>
         <Dialog
           visible={x}
           onClose={() => {
             setX(false);
           }}
           buttons={[
-            <button
+            <Button
               onClick={() => {
                 setX(false);
               }}
+              type="primary"
             >
               ok
-            </button>,
-            <button
+            </Button>,
+            <Button
               onClick={() => {
                 setX(false);
               }}
             >
               cancle
-            </button>,
+            </Button>
           ]}
         >
           <div>hi</div>
@@ -45,34 +49,35 @@ export default function() {
       </div>
       <div>
         <h1>example2</h1>
-        <button
+        <Button
           onClick={() => {
-            alert('1');
+            alert("1");
           }}
+          type="primary"
         >
           alert
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={() => {
             confirm(
-              '1',
+              "1",
               () => {
-                console.log('yes');
+                console.log("yes");
               },
               () => {
-                console.log('no');
-              },
+                console.log("no");
+              }
             );
           }}
         >
           confirm
-        </button>
+        </Button>
       </div>
       <div>
         <h1>example3</h1>
-        <button onClick={openModal}>
+        <Button onClick={openModal} type="primary">
           modal
-        </button>
+        </Button>
       </div>
     </div>
   );

@@ -1,8 +1,9 @@
-import React, { Fragment, ReactElement, ReactFragment, ReactNode } from 'react';
-import ReactDOM from 'react-dom';
-import { Icon } from '../index';
-import './dialog.scss';
-import { scopedClassMaker } from '../classes';
+import React, { Fragment, ReactElement, ReactFragment, ReactNode } from "react";
+import ReactDOM from "react-dom";
+import { Icon } from "../index";
+import { Button } from "../index";
+import "./dialog.scss";
+import { scopedClassMaker } from "../classes";
 
 interface Props {
   visible: boolean;
@@ -11,7 +12,7 @@ interface Props {
   maskClosable?: boolean;
 }
 
-const scopedClass = scopedClassMaker('golu-dialog');
+const scopedClass = scopedClassMaker("golu-dialog");
 const sc = scopedClass;
 
 const Dialog: React.FunctionComponent<Props> = props => {
@@ -29,17 +30,19 @@ const Dialog: React.FunctionComponent<Props> = props => {
 
   const dialogDom = props.visible ? (
     <Fragment>
-      <div className={sc('mask')} onClick={onClickMask} />
+      <div className={sc("mask")} onClick={onClickMask} />
       <div className={sc()}>
-        <div className={sc('close')} onClick={onClickClose}>
+        <div className={sc("close")} onClick={onClickClose}>
           <Icon name="close" />
         </div>
-        <header className={sc('header')}>提示</header>
-        <main className={sc('main')}>{props.children}</main>
+        <header className={sc("header")}>提示</header>
+        <main className={sc("main")}>{props.children}</main>
         {props.buttons && props.buttons.length > 0 && (
-          <footer className={sc('footer')}>
+          <footer className={sc("footer")}>
             {props.buttons &&
-              props.buttons.map((button, index) => React.cloneElement(button, { key: index }))}
+              props.buttons.map((button, index) =>
+                React.cloneElement(button, { key: index })
+              )}
           </footer>
         )}
       </div>
@@ -50,7 +53,7 @@ const Dialog: React.FunctionComponent<Props> = props => {
 };
 
 Dialog.defaultProps = {
-  maskClosable: true,
+  maskClosable: true
 };
 
 export const alert = (content: string) => {
@@ -60,16 +63,24 @@ export const alert = (content: string) => {
     div.remove();
   };
   const component = (
-    <Dialog visible={true} onClose={onClose} buttons={[<button onClick={onClose}>ok</button>]}>
+    <Dialog
+      visible={true}
+      onClose={onClose}
+      buttons={[<Button onClick={onClose}>ok</Button>]}
+    >
       {content}
     </Dialog>
   );
-  const div = document.createElement('div');
+  const div = document.createElement("div");
   document.body.append(div);
   ReactDOM.render(component, div);
 };
 
-export const confirm = (content: string, onOk?: () => void, onCancel?: () => void) => {
+export const confirm = (
+  content: string,
+  onOk?: () => void,
+  onCancel?: () => void
+) => {
   const cancel = () => {
     ReactDOM.render(React.cloneElement(component, { visible: false }), div);
     ReactDOM.unmountComponentAtNode(div);
@@ -89,26 +100,26 @@ export const confirm = (content: string, onOk?: () => void, onCancel?: () => voi
       visible={true}
       onClose={cancel}
       buttons={[
-        <button
+        <Button
           onClick={() => {
             ok();
           }}
         >
           ok
-        </button>,
-        <button
+        </Button>,
+        <Button
           onClick={() => {
             cancel();
           }}
         >
           cancel
-        </button>,
+        </Button>
       ]}
     >
       {content}
     </Dialog>
   );
-  const div = document.createElement('div');
+  const div = document.createElement("div");
   document.body.append(div);
   ReactDOM.render(component, div);
 };
@@ -124,7 +135,7 @@ export const modal = (content: ReactNode | ReactFragment) => {
       {content}
     </Dialog>
   );
-  const div = document.createElement('div');
+  const div = document.createElement("div");
   document.body.append(div);
   ReactDOM.render(component, div);
   return onClose;
