@@ -1,5 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`button tests 是个button 1`] = `
+<button
+  className="golu-button"
+  onClick={[Function]}
+/>
+`;
+
 exports[`button tests 是个div 1`] = `
 <div>
   你好
