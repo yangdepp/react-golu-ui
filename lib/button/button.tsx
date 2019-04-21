@@ -21,7 +21,6 @@ const Button: React.FunctionComponent<Props> = props => {
       className={classes(
         "golu-button",
         props.type ? "golu-button-primary" : "",
-        props.disabled ? "golu-button-disabled" : "",
         props.className
       )}
       disabled={props.disabled}

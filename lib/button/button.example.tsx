@@ -6,7 +6,9 @@ const ButtonExample: React.FunctionComponent = () => {
     <div>
       <Button onClick={() => console.log(111)}>default</Button>
       <Button disabled>disabled</Button>
-      <Button type="primary" onClick={() => console.log(111)}>primary</Button>
+      <Button type="primary" onClick={() => console.log(111)}>
+        primary
+      </Button>
     </div>
   );
 };
