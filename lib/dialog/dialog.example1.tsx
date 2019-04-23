@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-// import Dialog, { alert, confirm, modal } from "./dialog";
-import Dialog from "./dialog1";
-import { Button } from "../index";
+import React, { useState } from 'react';
+import Dialog from './dialog1';
+import { Button } from '../index';
 
 export default function() {
   const [x1, setX1] = useState(false);
@@ -9,7 +8,7 @@ export default function() {
   const handelCancel = () => {
     console.log('do something');
     setX1(false);
-  }
+  };
 
   return (
     <div>
@@ -17,11 +16,13 @@ export default function() {
         <h1>example1</h1>
         <Button onClick={() => setX1(true)}>click1</Button>
         <Dialog
+          title="0"
           visible={x1}
-          // onClose={() => setX1(false)}
           okText="ok"
           onOk={() => setX1(false)}
           onCancel={() => handelCancel()}
+          // footer={null}
+          footer={<Button type="primary" onClick={() => setX1(false)}>ok</Button>}
         />
       </div>
     </div>
