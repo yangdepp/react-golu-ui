@@ -1,8 +1,8 @@
-import React from "react";
-import "./button.scss";
-import classes from "../helpers/classes";
+import React from 'react';
+import './button.scss';
+import classes from '../helpers/classes';
 
-interface Props {
+interface Props extends React.HTMLAttributes<HTMLButtonElement> {
   className?: string;
   disabled?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
@@ -10,21 +10,19 @@ interface Props {
 }
 
 const Button: React.FunctionComponent<Props> = props => {
-  const onClick = (e: React.MouseEvent) => {
-    if (props.disabled) {
+  const { className, disabled, onClick, type, ...restProps } = props;
+  const handelOnClick = (e: React.MouseEvent) => {
+    if (disabled) {
       return e.preventDefault();
     }
-    props.onClick && props.onClick.call(e.target, e);
+    onClick && onClick.call(e.target, e);
   };
   return (
     <button
-      className={classes(
-        "golu-button",
-        props.type ? "golu-button-primary" : "",
-        props.className
-      )}
-      disabled={props.disabled}
-      onClick={onClick}
+      className={classes('golu-button', type === 'primary' ? 'golu-button-primary' : '', className)}
+      disabled={disabled}
+      onClick={handelOnClick}
+      {...restProps}
     >
       {props.children}
     </button>
