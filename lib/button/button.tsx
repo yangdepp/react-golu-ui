@@ -1,6 +1,7 @@
-import React from 'react';
-import './button.scss';
-import classes from '../helpers/classes';
+import React from "react";
+import "./button.scss";
+// import classes from "../helpers/classes";
+import { scopedClassMaker } from "../helpers/classes";
 
 interface Props extends React.HTMLAttributes<HTMLButtonElement> {
   className?: string;
@@ -8,6 +9,8 @@ interface Props extends React.HTMLAttributes<HTMLButtonElement> {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   type?: string;
 }
+
+const sc = scopedClassMaker("golu-button");
 
 const Button: React.FunctionComponent<Props> = props => {
   const { className, disabled, onClick, type, ...restProps } = props;
@@ -19,7 +22,10 @@ const Button: React.FunctionComponent<Props> = props => {
   };
   return (
     <button
-      className={classes('golu-button', type === 'primary' ? 'golu-button-primary' : '', className)}
+      className={sc(
+        { "": true, primary: type === "primary" },
+        { extra: className }
+      )}
       disabled={disabled}
       onClick={handelOnClick}
       {...restProps}
