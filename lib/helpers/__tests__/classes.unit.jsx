@@ -1,21 +1,15 @@
-import classes from '../classes'
+import classes, { scopedClassMaker } from '../classes';
 //  bdd行为驱动测试
 
-describe('classes', () => {
-  it('接受一个 className', () => {
-    const result = classes('a')
-    expect(result).toEqual('a')
-  })
-  it('接受两个 className', () => {
-    const result = classes('a', 'b')
-    expect(result).toEqual('a b')
-  })
-  it('接受含有falsy值 className', () => {
-    const result = classes('a', undefined, null, 0, '', false)
-    expect(result).toEqual('a')
-  })
-  it('什么都不传', () => {
-    const result = classes()
-    expect(result).toEqual('')
-  })
-})
+describe('scopedClassMaker测试', () => {
+  it('接受字符串或对象，生成多个className', () => {
+    const sc = scopedClassMaker('golu-layout');
+    expect(sc('')).toEqual('golu-layout');
+    expect(sc('x')).toEqual('golu-layout-x');
+    expect(sc('x', { extra: 'yyy' })).toEqual('golu-layout-x yyy');
+    expect(sc({ '': true })).toEqual('golu-layout');
+    expect(sc({ '': true, hasSider: true })).toEqual('golu-layout golu-layout-hasSider');
+    expect(sc({ '': true, hasSider: false }, { extra: 'xxx' })).toEqual('golu-layout xxx');
+    expect(sc({ '': false, hasSider: true }, { extra: 'xxx' })).toEqual('golu-layout-hasSider xxx');
+  });
+});
