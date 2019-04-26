@@ -1,31 +1,7 @@
-[class^="golu-"] {
+[class^='golu-'] {
   box-sizing: border-box;
   &::after,
   &::before {
     box-sizing: border-box;
   }
 }
-// button {
-//   box-sizing: border-box;
-//   border-radius: 4px;
-//   // border: 1px solid #d9d9d9;
-//   background: #fff;
-//   height: 32px;
-//   min-width: 62px;
-//   margin: 0 4px;
-//   cursor: pointer;
-//   &:focus {
-//     outline: 0;
-//   }
-//   &:active {
-//     outline: 0;
-//     box-shadow: none;
-//     border-style: #c4c4c4;
-//   }
-//   &:first-child {
-//     margin-left: 0;
-//   }
-//   &:last-child {
-//     margin-right: 0;
-//   }
-// }

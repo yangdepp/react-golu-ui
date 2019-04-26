@@ -4,48 +4,49 @@ import Content from './content';
 import Footer from './footer';
 import Layout from './layout';
 import Sider from './sider';
+import './layout.example.scss';
 
 export default function() {
   return (
     <div>
       <div>
         <h1>第一个例子</h1>
-        <Layout style={{ height: 500 }} className="hi">
-          <Header>Header</Header>
-          <Content>Content</Content>
-          <Footer>Footer</Footer>
+        <Layout className="layout-example-layout">
+          <Header className="layout-example-header">Header</Header>
+          <Content className="layout-example-content">Content</Content>
+          <Footer className="layout-example-footer">Footer</Footer>
         </Layout>
       </div>
       <div>
         <h1>第二个例子</h1>
-        <Layout style={{ height: 500 }} className="hi">
-          <Header>Header</Header>
+        <Layout className="layout-example-layout">
+          <Header className="layout-example-header">Header</Header>
           <Layout>
-            <Sider>Sider</Sider>
-            <Content>Content</Content>
+            <Sider className="layout-example-sider">Sider</Sider>
+            <Content className="layout-example-content">Content</Content>
           </Layout>
-          <Footer>Footer</Footer>
+          <Footer className="layout-example-footer">Footer</Footer>
         </Layout>
       </div>
       <div>
         <h1>第三个例子</h1>
-        <Layout style={{ height: 500 }} className="hi">
-          <Header>Header</Header>
+        <Layout className="layout-example-layout">
+          <Header className="layout-example-header">Header</Header>
           <Layout>
-            <Content>Content</Content>
-            <Sider>Sider</Sider>
+            <Content className="layout-example-content">Content</Content>
+            <Sider className="layout-example-sider">Sider</Sider>
           </Layout>
-          <Footer>Footer</Footer>
+          <Footer className="layout-example-footer">Footer</Footer>
         </Layout>
       </div>
       <div>
         <h1>第四个例子</h1>
-        <Layout className="hi" style={{height: 500}}>
-          <Sider>Sider</Sider>
+        <Layout className="layout-example-layout">
+          <Sider className="layout-example-sider">Sider</Sider>
           <Layout>
-            <Header>Header</Header>
-            <Content>Content</Content>
-            <Footer>Footer</Footer>
+            <Header className="layout-example-header">Header</Header>
+            <Content className="layout-example-content">Content</Content>
+            <Footer className="layout-example-footer">Footer</Footer>
           </Layout>
         </Layout>
       </div>
