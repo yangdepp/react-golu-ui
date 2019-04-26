@@ -40,7 +40,7 @@ export default function() {
       </div>
       <div>
         <h1>第四个例子</h1>
-        <Layout style={{ height: 500 }} className="hi">
+        <Layout className="hi" style={{height: 500}}>
           <Sider>Sider</Sider>
           <Layout>
             <Header>Header</Header>
