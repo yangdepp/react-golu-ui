@@ -4,7 +4,7 @@ const base = require('./webpack.config');
 module.exports = Object.assign({}, base, {
   mode: 'production',
   output: {
-    path: path.resolve(__dirname, 'doc/lib')
+    path: path.resolve(__dirname, 'doc')
   },
   entry: {
     example: './example.tsx'
