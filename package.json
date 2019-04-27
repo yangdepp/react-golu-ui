@@ -43,6 +43,8 @@
     "jest": "^24.4.0",
     "jest-junit": "^6.3.0",
     "node-sass": "^4.11.0",
+    "prism-react-renderer": "^0.1.6",
+    "raw-loader": "^2.0.0",
     "react-test-renderer": "^16.8.4",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",

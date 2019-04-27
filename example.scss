@@ -18,6 +18,13 @@ a {
   text-decoration: none;
   color: inherit;
 }
+pre {
+  font-family: "Lucida Console", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
+    monospace;
+  font-size: 14px;
+  line-height: 1.7;
+  white-space: pre;
+}
 h1,
 h2,
 h3,
@@ -75,11 +82,11 @@ h6 {
       .active {
         background-color: #e6f7ff;
         border-right: 3px solid #1890ff;
-        color: #1890ff;        
+        color: #1890ff;
       }
     }
   }
-  .site-footer{
+  .site-footer {
     border-top: 1px solid #ebedf0;
     height: 64px;
     line-height: 64px;
