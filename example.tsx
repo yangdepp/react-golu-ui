@@ -41,7 +41,7 @@ ReactDOM.render(
           <Route path="/layout" component={LayoutExample} />
         </Content>
       </Layout>
-      <Footer className="site-footer">@ yangdepp</Footer>
+      <Footer className="site-footer">&copy; yangdepp</Footer>
     </Layout>
   </Router>,
   document.querySelector("#root")
