@@ -5,13 +5,13 @@
   &-content {
     flex-grow: 1;
   }
-  & & {
-    flex-grow: 1;
+  & > & {
     flex-direction: row;
+    flex-grow: 1 ;
   }
   &-hasSider {
     flex-direction: row;
-    .golu-layout {
+    & > .golu-layout {
       flex-direction: column;
     }
   }
