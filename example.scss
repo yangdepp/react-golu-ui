@@ -33,6 +33,23 @@ h5,
 h6 {
   font-weight: normal;
 }
+@keyframes logospin {
+  0% {
+    transform: rotate(0deg)
+  }
+  25% {
+    transform: rotate(30deg)
+  }
+  50% {
+    transform: rotate(0deg)
+  }
+  75% {
+    transform: rotate(-30deg)
+  }
+  100% {
+    transform: rotate(0deg)
+  }
+}
 
 .site-page {
   min-height: 100vh;
@@ -46,6 +63,12 @@ h6 {
     .header-logo {
       width: 48px;
       height: 48px;
+      &:hover{
+        animation-name: logospin;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
     }
     h1 {
       font-weight: 700;
