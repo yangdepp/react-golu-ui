@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Dialog from './dialog1';
+import Dialog from './dialog';
 import { Button } from '../index';
 
 export default function() {
