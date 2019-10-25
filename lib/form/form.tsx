@@ -1,5 +1,9 @@
 import React, { ReactFragment } from 'react';
 import Input from '../input/input';
+import { scopedClassMaker } from '../helpers/classes';
+import './form.scss';
+
+const sc = scopedClassMaker('golu-form');
 
 export interface FormValue {
   [K: string]: any;
@@ -33,19 +37,29 @@ const Form: React.FunctionComponent<Props> = (props) => {
 
   return (
     <form onSubmit={onSubmit}>
-      {props.fileds.map((f) => (
-        <div key={f.name}>
-          {f.label}
-          <Input
-            type={f.input.type}
-            value={formData[f.name]}
-            // onChange={(e) => onInputChange(f.name, e.target.value)}
-            onChange={onInputChange.bind(null, f.name)}
-          />
-          <div>{props.errors[f.name]}</div>
-        </div>
-      ))}
-      <div>{props.buttons}</div>
+      <table>
+        {props.fileds.map((f) => (
+          <tr key={f.name} className={sc('tr')}>
+            <td className="golu-form-td">
+              <span className="golu-form-label">{f.label}</span>
+            </td>
+            <td className="golu-form-td">
+              <Input
+                className="golu-form-input"
+                type={f.input.type}
+                value={formData[f.name]}
+                // onChange={(e) => onInputChange(f.name, e.target.value)}
+                onChange={onInputChange.bind(null, f.name)}
+              />
+            </td>
+            <div>{props.errors[f.name]}</div>
+          </tr>
+        ))}
+        <tr className={sc('tr')}>
+          <td className="golu-form-td" />
+          <td className="golu-form-td">{props.buttons}</td>
+        </tr>
+      </table>
     </form>
   );
 };
