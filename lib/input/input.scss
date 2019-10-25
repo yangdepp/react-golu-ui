@@ -1,0 +1,13 @@
+.golu-input {
+  border: 1px solid #ddd;
+  line-height: 22px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px fade-out(#40a9ff, 1);
+  transition: box-shadow 0.3s ease-in-out;
+  &:focus {
+    outline: none;
+    border-color: #40a9ff;
+    box-shadow: 0 0 0 1px fade-out(#40a9ff, 0.7);
+  }
+}
