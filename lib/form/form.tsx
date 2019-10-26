@@ -36,8 +36,8 @@ const Form: React.FunctionComponent<Props> = (props) => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
-      <table>
+    <form onSubmit={onSubmit} className={sc('golu-form')}>
+      <table className={sc('table')}>
         {props.fileds.map((f) => (
           <tr key={f.name} className={sc('tr')}>
             <td className="golu-form-td">
@@ -51,8 +51,10 @@ const Form: React.FunctionComponent<Props> = (props) => {
                 // onChange={(e) => onInputChange(f.name, e.target.value)}
                 onChange={onInputChange.bind(null, f.name)}
               />
+              <div className={sc('error')}>
+                {props.errors[f.name] ? props.errors[f.name][0] : <span>&nbsp;</span>}
+              </div>
             </td>
-            <div>{props.errors[f.name]}</div>
           </tr>
         ))}
         <tr className={sc('tr')}>

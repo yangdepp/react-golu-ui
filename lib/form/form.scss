@@ -1,14 +1,27 @@
 .golu-form {
+  &-table {
+    border-collapse: collapse;
+  }
+  &-label {
+    line-height: 32px;
+  }
   &-tr:last-child {
     .golu-form-td  {
       padding-bottom: 0;
     }
   }
   &-td {
+    vertical-align: top;
     padding-top: 0;
-    padding-bottom: 32px;
+    padding-bottom: 8px;
   }
   &-td + &-td {
     padding-left: 16px;
+  }
+  &-error {
+    margin-top: 2px;
+    font-size: 0.8em;
+    color: red;
+    transition: all .3s ease;
   }
 }
