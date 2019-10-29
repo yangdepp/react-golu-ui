@@ -1,15 +1,16 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { HashRouter as Router, Route, NavLink } from "react-router-dom";
-import IconDemo from "./lib/icon/icon.demo";
-import ButtonExample from "./lib/button/button.example";
-import DialogExample from "./lib/dialog/dialog.example";
-import LayoutExample from "./lib/layout/layout.example";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { HashRouter as Router, Route, NavLink } from 'react-router-dom';
+import IconDemo from './lib/icon/icon.demo';
+import ButtonExample from './lib/button/button.example';
+import DialogExample from './lib/dialog/dialog.example';
+import LayoutExample from './lib/layout/layout.example';
 import FormExample from './lib/form/form.example';
-import { Footer, Header, Content, Sider, Layout } from "./lib/layout/layout";
-import "./example.scss";
+import ScrollExample from './lib/scroll/scroll.example';
+import { Footer, Header, Content, Sider, Layout } from './lib/layout/layout';
+import './example.scss';
 
-const logo = require("./logo.png");
+const logo = require('./logo.png');
 
 ReactDOM.render(
   <Router>
@@ -36,6 +37,9 @@ ReactDOM.render(
             <li>
               <NavLink to="/form">表单Form</NavLink>
             </li>
+            <li>
+              <NavLink to="/scroll">滚动条</NavLink>
+            </li>
           </ul>
         </Sider>
         <Content>
@@ -44,10 +48,11 @@ ReactDOM.render(
           <Route path="/dialog" component={DialogExample} />
           <Route path="/layout" component={LayoutExample} />
           <Route path="/form" component={FormExample} />
+          <Route path="/scroll" component={ScrollExample} />
         </Content>
       </Layout>
       <Footer className="site-footer">&copy; yangdepp</Footer>
     </Layout>
   </Router>,
-  document.querySelector("#root")
+  document.querySelector('#root'),
 );
