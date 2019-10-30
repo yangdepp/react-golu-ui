@@ -42,7 +42,7 @@ ReactDOM.render(
             </li>
           </ul>
         </Sider>
-        <Content>
+        <Content className="site-content">
           <Route path="/icon" component={IconDemo} />
           <Route path="/button" component={ButtonExample} />
           <Route path="/dialog" component={DialogExample} />
