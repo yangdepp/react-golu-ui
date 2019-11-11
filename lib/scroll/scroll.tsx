@@ -5,6 +5,7 @@ import React, {
   useEffect,
   useRef,
   MouseEventHandler,
+  TouchEventHandler,
 } from 'react';
 import './scroll.scss';
 import scrollbarWidth from './scrollbar-width';
@@ -16,6 +17,15 @@ const Scroll: React.FunctionComponent<Props> = (props) => {
   const [barHeight, setBarHeight] = useState(0);
   const [barTop, _setBarTop] = useState(0);
   const [barVisible, setBarVisible] = useState(false);
+  const [translateY, _setTranslateY] = useState(0);
+  const setTranslateY = (y: number) => {
+    if (y < 0) {
+      y = 0;
+    } else if (y > 150) {
+      y = 150;
+    }
+    _setTranslateY(y);
+  };
 
   const timerIdRef = useRef<number | null>(null);
 
@@ -52,6 +62,8 @@ const Scroll: React.FunctionComponent<Props> = (props) => {
   const firstYRef = useRef(0);
   const draggingRef = useRef(false);
   const firstBarTopRef = useRef(0);
+  let moveCount = useRef(0);
+  const pulling = useRef(false);
 
   const onMouseDownBar: MouseEventHandler = (e) => {
     draggingRef.current = true;
@@ -96,13 +108,40 @@ const Scroll: React.FunctionComponent<Props> = (props) => {
       document.removeEventListener('selectstart', onSelect);
     };
   }, []);
+
+  const onTouchMove: TouchEventHandler = (e) => {
+    const deltaY = e.touches[0].clientY - lastYRef.current;
+    moveCount.current += 1;
+    if (moveCount.current === 1 && deltaY < 0) {
+      pulling.current = false;
+      return;
+    }
+    if (pulling.current === false) return;
+    setTranslateY(translateY + deltaY);
+    lastYRef.current = e.touches[0].clientY;
+  };
+  const ontouchstart: TouchEventHandler = (e) => {
+    const scrollTop = containerRef.current!.scrollTop;
+    if (scrollTop !== 0) return;
+    pulling.current = true;
+    lastYRef.current = e.touches[0].clientY;
+    moveCount.current = 0;
+  };
+  const onTouchEnd: TouchEventHandler = (e) => {
+    setTranslateY(0);
+  };
+  const lastYRef = useRef(0);
+
   return (
     <div className="golu-scroll" {...rest}>
       <div
         className="golu-scroll-inner"
-        style={{ right: -scrollbarWidth() }}
+        style={{ right: -scrollbarWidth(), transform: `translateY(${translateY}px)` }}
         onScroll={onScroll}
         ref={containerRef}
+        onTouchMove={onTouchMove}
+        onTouchStart={ontouchstart}
+        onTouchEnd={onTouchEnd}
       >
         {props.children}
       </div>
