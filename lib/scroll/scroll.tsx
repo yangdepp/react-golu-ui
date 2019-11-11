@@ -15,6 +15,9 @@ const Scroll: React.FunctionComponent<Props> = (props) => {
   const { children, ...rest } = props;
   const [barHeight, setBarHeight] = useState(0);
   const [barTop, _setBarTop] = useState(0);
+  const [barVisible, setBarVisible] = useState(false);
+
+  const timerIdRef = useRef<number | null>(null);
 
   const setBarTop = (number: number) => {
     if (number < 0) {
@@ -31,11 +34,19 @@ const Scroll: React.FunctionComponent<Props> = (props) => {
   };
 
   const onScroll: UIEventHandler = (e) => {
+    setBarVisible(true);
     const { current } = containerRef;
     const scrollHeight = current!.scrollHeight;
     const viewHeight = current!.getBoundingClientRect().height;
     const scrollTop = current!.scrollTop;
     setBarTop((scrollTop * viewHeight) / scrollHeight);
+
+    if (timerIdRef.current !== null) {
+      clearInterval(timerIdRef.current);
+    }
+    timerIdRef.current = window.setTimeout(() => {
+      setBarVisible(false);
+    }, 500);
   };
 
   const firstYRef = useRef(0);
@@ -95,13 +106,15 @@ const Scroll: React.FunctionComponent<Props> = (props) => {
       >
         {props.children}
       </div>
-      <div className="golu-scroll-track">
-        <div
-          className="golu-scroll-bar"
-          style={{ height: barHeight, transform: `translateY(${barTop}px)` }}
-          onMouseDown={onMouseDownBar}
-        ></div>
-      </div>
+      {barVisible && (
+        <div className="golu-scroll-track">
+          <div
+            className="golu-scroll-bar"
+            style={{ height: barHeight, transform: `translateY(${barTop}px)` }}
+            onMouseDown={onMouseDownBar}
+          ></div>
+        </div>
+      )}
     </div>
   );
 };
