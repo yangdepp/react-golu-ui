@@ -22,8 +22,8 @@ const Scroll: React.FunctionComponent<Props> = (props) => {
   const setTranslateY = (y: number) => {
     if (y < 0) {
       y = 0;
-    } else if (y > 150) {
-      y = 150;
+    } else if (y > 100) {
+      y = 100;
     }
     _setTranslateY(y);
   };
@@ -159,14 +159,15 @@ const Scroll: React.FunctionComponent<Props> = (props) => {
         </div>
       )}
       <div className="golu-scroll-pulling" style={{ height: translateY }}>
-        {translateY === 150 ? (
+        {translateY === 100 ? (
           <Icon
             name="check-circle"
+            style={{color: '#d1d1d1'}}
           ></Icon>
         ) : (
           <Icon
             name="sync"
-            style={{ transform: `rotate(${(360 / 150) * translateY}deg)` }}
+            style={{ transform: `rotate(${(360 / 100) * translateY}deg)` }}
           ></Icon>
         )}
       </div>
