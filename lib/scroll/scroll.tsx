@@ -5,15 +5,15 @@ import React, {
   useEffect,
   useRef,
   MouseEventHandler,
-  TouchEventHandler
-} from "react";
-import "./scroll.scss";
-import scrollbarWidth from "./scrollbar-width";
-import Icon from "../icon/icon";
+  TouchEventHandler,
+} from 'react';
+import './scroll.scss';
+import scrollbarWidth from './scrollbar-width';
+import Icon from '../icon/icon';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {}
 
-const Scroll: React.FunctionComponent<Props> = props => {
+const Scroll: React.FunctionComponent<Props> = (props) => {
   const { children, ...rest } = props;
   const [barHeight, setBarHeight] = useState(0);
   const [barTop, _setBarTop] = useState(0);
@@ -44,7 +44,7 @@ const Scroll: React.FunctionComponent<Props> = props => {
     _setBarTop(number);
   };
 
-  const onScroll: UIEventHandler = e => {
+  const onScroll: UIEventHandler = (e) => {
     setBarVisible(true);
     const { current } = containerRef;
     const scrollHeight = current!.scrollHeight;
@@ -66,7 +66,7 @@ const Scroll: React.FunctionComponent<Props> = props => {
   let moveCount = useRef(0);
   const pulling = useRef(false);
 
-  const onMouseDownBar: MouseEventHandler = e => {
+  const onMouseDownBar: MouseEventHandler = (e) => {
     draggingRef.current = true;
     firstYRef.current = e.clientY;
     firstBarTopRef.current = barTop;
@@ -100,17 +100,17 @@ const Scroll: React.FunctionComponent<Props> = props => {
   };
 
   useEffect(() => {
-    document.addEventListener("mouseup", onMouseUpBar);
-    document.addEventListener("mousemove", onMouseMoveBar);
-    document.addEventListener("selectstart", onSelect);
+    document.addEventListener('mouseup', onMouseUpBar);
+    document.addEventListener('mousemove', onMouseMoveBar);
+    document.addEventListener('selectstart', onSelect);
     return () => {
-      document.removeEventListener("mouseup", onMouseUpBar);
-      document.removeEventListener("mousemove", onMouseMoveBar);
-      document.removeEventListener("selectstart", onSelect);
+      document.removeEventListener('mouseup', onMouseUpBar);
+      document.removeEventListener('mousemove', onMouseMoveBar);
+      document.removeEventListener('selectstart', onSelect);
     };
   }, []);
 
-  const onTouchMove: TouchEventHandler = e => {
+  const onTouchMove: TouchEventHandler = (e) => {
     const deltaY = e.touches[0].clientY - lastYRef.current;
     moveCount.current += 1;
     if (moveCount.current === 1 && deltaY < 0) {
@@ -121,14 +121,14 @@ const Scroll: React.FunctionComponent<Props> = props => {
     setTranslateY(translateY + deltaY);
     lastYRef.current = e.touches[0].clientY;
   };
-  const ontouchstart: TouchEventHandler = e => {
+  const ontouchstart: TouchEventHandler = (e) => {
     const scrollTop = containerRef.current!.scrollTop;
     if (scrollTop !== 0) return;
     pulling.current = true;
     lastYRef.current = e.touches[0].clientY;
     moveCount.current = 0;
   };
-  const onTouchEnd: TouchEventHandler = e => {
+  const onTouchEnd: TouchEventHandler = (e) => {
     setTranslateY(0);
   };
   const lastYRef = useRef(0);
@@ -139,7 +139,7 @@ const Scroll: React.FunctionComponent<Props> = props => {
         className="golu-scroll-inner"
         style={{
           right: -scrollbarWidth(),
-          transform: `translateY(${translateY}px)`
+          transform: `translateY(${translateY}px)`,
         }}
         onScroll={onScroll}
         ref={containerRef}
@@ -160,10 +160,12 @@ const Scroll: React.FunctionComponent<Props> = props => {
       )}
       <div className="golu-scroll-pulling" style={{ height: translateY }}>
         {translateY === 150 ? (
-          "释放手指更新"
+          <Icon
+            name="check-circle"
+          ></Icon>
         ) : (
           <Icon
-            name="reload"
+            name="sync"
             style={{ transform: `rotate(${(360 / 150) * translateY}deg)` }}
           ></Icon>
         )}
