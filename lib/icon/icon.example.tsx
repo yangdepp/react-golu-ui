@@ -3,9 +3,9 @@ import Icon from "./icon";
 const IconExample: React.FunctionComponent = () => {
   return (
     <div>
-      <Icon name="alipay" className="yyy" />
-      <Icon name="wechat" />
-      <Icon name="close" />
+      <Icon name="reload" className="yyy" spin />
+      <Icon name="rise" />
+      <Icon name="search" />
     </div>
   );
 };
